@@ -1,0 +1,41 @@
+#!/bin/bash
+
+function run_install
+{
+   
+    local dir_bin=$HOME/bin
+    local dir_repo=$(git rev-parse --show-toplevel)
+    local dir_working=${dir_repo}
+    
+    # Add ~/bin and add to path
+    mkdir -p $dir_bin
+    if ! (echo $PATH | grep -q "$dir_bin")
+    then 
+        echo "export PATH=$PATH:$dir_bin" >> $HOME/.bashrc
+        source $HOME/.bashrc
+    fi
+    
+    # Updating/installing composer
+    if [ -f "$dir_bin/composer" ]
+    then
+    	echo Updating composer
+    	php $dir_bin/composer self-update --quiet 
+    else
+    	echo Installing composer
+    	curl -sS https://getcomposer.org/installer | php -- --install-dir=$dir_bin --filename=composer
+    fi
+    
+    # Installing dependencies
+    echo Installing dependencies
+    php $dir_bin/composer install --working-dir $dir_working
+    exit 0
+}
+
+case "${1}" in
+    --about )
+        echo -n "Installs composer dependencies"
+        ;;
+    * )
+        run_install "$@"
+        ;;
+esac
