@@ -1,0 +1,20 @@
+language: php
+  
+matrix:
+    include:
+        - php: 5.3
+        - php: 5.4
+        - php: 5.5
+        - php: 5.6
+        - php: nightly
+        - php: hhvm-nightly
+    allow_failures:
+        - php: nightly
+        - php: hhvm-nightly
+
+
+before_script:
+    - composer self-update
+
+install:
+    - composer install
