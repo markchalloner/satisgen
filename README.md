@@ -1,5 +1,7 @@
 # SatisGen
 
+[![Build Status](https://travis-ci.org/markchalloner/satisgen.svg?branch=master)](https://travis-ci.org/markchalloner/satisgen)
+
 A satis.php to satis.json generator. Built as a learning exercise for:
 
 - Symfony Console component
