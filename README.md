@@ -1,6 +1,12 @@
 # SatisGen
 
-[![Build Status](https://travis-ci.org/markchalloner/satisgen.svg?branch=master)](https://travis-ci.org/markchalloner/satisgen) [![Coverage Status](https://coveralls.io/repos/markchalloner/satisgen/badge.svg)](https://coveralls.io/r/markchalloner/satisgen)
+[![Build Status](https://travis-ci.org/markchalloner/satisgen.svg?branch=master)](https://travis-ci.org/markchalloner/satisgen)
+[![Coverage Status](https://coveralls.io/repos/markchalloner/satisgen/badge.svg)](https://coveralls.io/r/markchalloner/satisgen)
+[![Dependency Status](https://www.versioneye.com/user/projects/554d4b678a8e5655d6000076/badge.svg?style=flat)](https://www.versioneye.com/user/projects/554d4b678a8e5655d6000076)
+
+[![Latest Stable Version](https://poser.pugx.org/markchalloner/satisgen/v/stable)](https://packagist.org/packages/markchalloner/satisgen)
+[![Total Downloads](https://poser.pugx.org/markchalloner/satisgen/downloads)](https://packagist.org/packages/markchalloner/satisgen)
+[![License](https://poser.pugx.org/markchalloner/satisgen/license)](https://packagist.org/packages/markchalloner/satisgen)
 
 A satis.php to satis.json generator. Built as a learning exercise for:
 
@@ -8,6 +14,8 @@ A satis.php to satis.json generator. Built as a learning exercise for:
 - [Travis CI](https://travis-ci.org/markchalloner/satisgen)
 - [Coveralls](https://coveralls.io/repos/markchalloner/satisgen)
 - [Packagist](https://packagist.org/packages/markchalloner/satisgen)
+- [VersionEye](https://packagist.org/packages/markchalloner/satisgen)
+- [Badge Poser](https://poser.pugx.org/)
 
 and to pull together other project techniques:
 
