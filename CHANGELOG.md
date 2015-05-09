@@ -7,9 +7,11 @@ This file uses change log convention from [Keep a CHANGELOG](http://keepachangel
 
 ## [0.0.2] - 2015-05-09
 ### Added
-- Travis CI Settings
+- Travis CI settings
+- Coveralls settings
 ### Fixed
 - PHPUnit settings
+- Composer licence
 
 ## [0.0.1] - 2015-05-09
 ### Added
