@@ -5,13 +5,18 @@ This file uses change log convention from [Keep a CHANGELOG](http://keepachangel
 
 ## [Unreleased][unreleased]
 
+## [0.0.3] - 2015-05-09
+### Fixed
+- Travis builds
+- Composer license
+
 ## [0.0.2] - 2015-05-09
 ### Added
 - Travis CI settings
 - Coveralls settings
 ### Fixed
 - PHPUnit settings
-- Composer licence
+- Composer license
 
 ## [0.0.1] - 2015-05-09
 ### Added
@@ -21,5 +26,6 @@ This file uses change log convention from [Keep a CHANGELOG](http://keepachangel
 - Dependencies via composer composer.json
 - Readme file with documentation README.md
 
-[unreleased]: https://github.com/oban/oban-site/compare/0.0.2...HEAD
+[unreleased]: https://github.com/oban/oban-site/compare/0.0.3...HEAD
+[0.0.3]: https://github.com/oban/oban-site/compare/0.0.2...0.0.3
 [0.0.2]: https://github.com/oban/oban-site/compare/0.0.1...0.0.2
