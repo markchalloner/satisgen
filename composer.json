@@ -1,7 +1,7 @@
 {
     "name": "markchalloner/satisgen",
     "description": "Generates a Satis satis.json file from a satis.php file",
-    "licence": "MIT",
+    "license": "MIT",
     "authors": [
         {
             "name": "Mark Challoner",
