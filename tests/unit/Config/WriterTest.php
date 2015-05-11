@@ -5,14 +5,11 @@ namespace SatisGen\Tests\Config;
 use \Dotenv;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamFile;
-//use SatisGen\Application\GenerateApplication;
-//use SatisGen\Command\GenerateCommand;
-use SatisGen\Config\ConfigWriter;
+use SatisGen\Config\Writer;
 use SatisGen\Tests\SatisGenTest;
 use Symfony\Component\Console\Tester\CommandTester;
-//use Symfony\Component\Filesystem\Filesystem;
 
-class ConfigWriterTest extends SatisGenTest
+class WriterTest extends SatisGenTest
 {
 
     private $outputFile;
@@ -38,8 +35,8 @@ class ConfigWriterTest extends SatisGenTest
         $envFile = $this->envFile;
         $root = $this->root;
 
-        $configWriter = new ConfigWriter($this->filesystem, $envFile->url());
-        $configWriter->setEnvs(array(
+        $writer = new Writer($this->filesystem, $envFile->url());
+        $writer->setEnvs(array(
             'CONFIG_WRITER_INT' => 999,
             'CONFIG_WRITER_STRING' => 'foobar'
         ));
@@ -57,8 +54,8 @@ class ConfigWriterTest extends SatisGenTest
         $envFile = $this->envFile;
         $root = $this->root;
 
-        $configWriter = new ConfigWriter($this->filesystem, $envFile->url());
-        $configWriter->setEnv('CONFIG_WRITER_INT', 999);
+        $writer = new Writer($this->filesystem, $envFile->url());
+        $writer->setEnv('CONFIG_WRITER_INT', 999);
         
         Dotenv::load($root->url());
 

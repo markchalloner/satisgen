@@ -4,7 +4,7 @@ namespace SatisGen\Config;
 
 use Symfony\Component\Console\Question\Question;
 
-class ConfigInputReader extends AbstractConfigReader {
+class InputReader implements ReaderInterface {
 
     private $input;
     private $output;

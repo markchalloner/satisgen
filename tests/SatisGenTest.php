@@ -3,7 +3,7 @@
 namespace SatisGen\Tests;
 
 use SatisGen\Application\GenerateApplication;
-use SatisGen\Config\ConfigInputReader;
+use SatisGen\Config\InputReader;
 use Symfony\Component\Filesystem\Filesystem;
 
 
@@ -19,10 +19,10 @@ abstract class SatisGenTest extends \PHPUnit_Framework_TestCase
         $this->filesystem = new Filesystem();
 
         // ConfigInputReader
-        $this->configInputReader = new ConfigInputReader();
+        $this->inputReader = new InputReader();
 
         // GenerateApplication
-        $application = new GenerateApplication($this->filesystem, $this->configInputReader);
+        $application = new GenerateApplication($this->filesystem, $this->inputReader);
         $application->setAutoExit(false);
         $this->application = $application;
     }

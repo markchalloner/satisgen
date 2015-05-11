@@ -2,7 +2,7 @@
 
 namespace SatisGen\Config;
 
-class ConfigWriter {
+class Writer implements WriterInterface {
 
     private $filesystem;
     private $outputFile;

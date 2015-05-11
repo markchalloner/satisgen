@@ -2,7 +2,7 @@
 
 namespace SatisGen\Command;
 
-use SatisGen\Config\ConfigInputReader;
+use SatisGen\Config\ReaderInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,7 +17,7 @@ class GenerateCommand extends Command
     private $filesystem;
     private $config;
 
-    public function __construct(Filesystem $filesystem, ConfigInputReader $config)
+    public function __construct(Filesystem $filesystem, ReaderInterface $config)
     {
         $this->filesystem = $filesystem;
         $this->config = $config;
