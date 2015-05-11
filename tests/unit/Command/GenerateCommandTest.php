@@ -38,7 +38,7 @@ class GenerateCommandTest extends SatisGenTest
             'output_file' => $this->outputFile->url()
         ));
 
-        $this->assertRegExp('/Generating... OK/', $commandTester->getDisplay());
+        $this->assertRegExp('/Generating\.\.\..*OK/s', $commandTester->getDisplay());
         $this->assertEquals('test', $this->outputFile->getContent());
     }
 

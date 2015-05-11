@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file uses change log convention from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased][unreleased]
+### Added
+- Config handling
+## Changed
+- Moved unit tests into tests/unit
 
 ## [0.0.3] - 2015-05-09
 ### Fixed

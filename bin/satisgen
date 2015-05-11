@@ -5,8 +5,9 @@ require __DIR__.'/../src/bootstrap.php';
 
 use SatisGen\Application\GenerateApplication;
 use SatisGen\Command\GenerateCommand;
+use SatisGen\Config\ConfigInputReader;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Filesystem\Filesystem;
 
-$application = new GenerateApplication(new Filesystem());
+$application = new GenerateApplication(new Filesystem(), new ConfigInputReader());
 $application->run();

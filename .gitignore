@@ -1,4 +1,5 @@
 /tmp
 /vendor
 /web
+/satis.*
 composer.phar

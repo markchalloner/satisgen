@@ -2,6 +2,7 @@
 
 namespace SatisGen\Command;
 
+use SatisGen\Config\ConfigInputReader;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -14,10 +15,12 @@ class GenerateCommand extends Command
 {
 
     private $filesystem;
+    private $config;
 
-    public function __construct(Filesystem $filesystem)
+    public function __construct(Filesystem $filesystem, ConfigInputReader $config)
     {
         $this->filesystem = $filesystem;
+        $this->config = $config;
         parent::__construct();
     }
 
@@ -46,8 +49,13 @@ class GenerateCommand extends Command
         $inputFile  = $input->getArgument('input_file') ?: 'satis.php';
         $outputFile = $input->getArgument('output_file') ?: 'satis.json';
 
+        $helper = $this->getHelper('question');
+        $this->config->setInput($input);
+        $this->config->setOutput($output);
+        $this->config->setHelper($helper);
+
         if ($filesystem->exists($inputFile)) {
-            $output->write('<info>Generating... </info>');
+            $output->writeln('<info>Generating... </info>');
             /* TODO: Fixed by https://github.com/symfony/symfony/pull/14580
             try {
                 $filesystem->dumpFile($outputFile, $this->generate($inputFile));
@@ -64,8 +72,9 @@ class GenerateCommand extends Command
     }
 
     protected function generate($file) {
+        $config = $this->config;
         ob_start();
-        require @$file;
+        require $file;
         return ob_get_clean();
 
     }

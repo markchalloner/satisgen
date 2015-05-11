@@ -14,7 +14,12 @@
     </filter>
     <testsuites>
         <testsuite name="Unit Tests">
-            <directory>tests</directory>
+            <directory suffix="Test.php" phpVersion="5.3.0" phpVersionOperator=">=">./tests</directory>
         </testsuite>
-</testsuites>
+    </testsuites>
+    <php>
+        <env name="TEST_INT" value="999" />
+        <env name="TEST_FLOAT" value="9.99" />
+        <env name="TEST_STRING" value="foobar" />
+    </php>
 </phpunit>
