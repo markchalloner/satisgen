@@ -7,9 +7,6 @@
 [![Coverage Status](https://coveralls.io/repos/markchalloner/satisgen/badge.svg)](https://coveralls.io/r/markchalloner/satisgen)
 [![Dependency Status](https://www.versioneye.com/user/projects/554d4b678a8e5655d6000076/badge.svg?style=flat)](https://www.versioneye.com/user/projects/554d4b678a8e5655d6000076)
 
-
-
-
 A satis.php to satis.json generator. Built as a learning exercise for:
 
 - [Symfony Console component](http://symfony.com/doc/current/components/console/introduction.html)
@@ -25,7 +22,15 @@ and to pull together other project techniques:
 - [Change log](http://keepachangelog.com/)
 - [Licencing](http://choosealicense.com/)
 - [Semantic versioning](http://semver.org/spec/v2.0.0.html)
-- [Git hooks](https://github.com/icefox/git-hooks)
+- [Git hooks](https://github.com/icefox/git-hooks)- 
+
+## Todos
+
+- Variable parsing and write to .env
+- [Dependecy Injection](http://fabien.potencier.org/article/12/do-you-need-a-dependency-injection-container)
+  - [DIC](http://symfony.com/doc/current/components/dependency_injection/introduction.html)
+  - [Traits](http://jasonlotito.com/programming/injectors-dependency-injection-with-traits)
+- [Scrutinizer](http://scrutinizer-ci.com)
 
 ## Installation
 
