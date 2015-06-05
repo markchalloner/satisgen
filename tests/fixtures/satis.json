@@ -1,0 +1,26 @@
+{
+    "name": "Test",
+    "homepage": "https://www.test.com",
+    "archive": {
+        "directory": "dist",
+        "format": "zip",
+        "prefix-url": "https://www.test.com",
+        "skip-dev": true
+    },
+    "repositories": [
+        {
+            "_comment": "Custom package", 
+            "type": "package",
+            "package": {
+                "name": "vendor/package",
+                "version": "1.0.0",
+                "type": "wordpress-plugin",
+                "dist": {
+                    "type": "zip",
+                    "url": "http://www.custom.com/download?licence=ABCDEFGHIJKL"
+                }
+            }
+        },
+    ],
+    "require-all": true
+}

@@ -5,8 +5,9 @@ This file uses change log convention from [Keep a CHANGELOG](http://keepachangel
 
 ## [Unreleased][unreleased]
 ### Added
-- Config handling
-## Changed
+- Config handling and writing [Dotenv] files
+- Integration tests and fixtures under tests
+### Changed
 - Moved unit tests into tests/unit
 
 ## [0.0.3] - 2015-05-09
@@ -21,6 +22,8 @@ This file uses change log convention from [Keep a CHANGELOG](http://keepachangel
 ### Fixed
 - PHPUnit settings
 - Composer license
+
+[Dotenv]: https://github.com/vlucas/phpdotenv
 
 ## [0.0.1] - 2015-05-09
 ### Added

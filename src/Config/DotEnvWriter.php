@@ -2,17 +2,19 @@
 
 namespace SatisGen\Config;
 
-class Writer implements WriterInterface {
+use Symfony\Component\Filesystem\Filesystem;
+
+class DotEnvWriter implements ConfigWriterInterface {
 
     private $filesystem;
     private $outputFile;
 
-    public function __construct($filesystem, $outputFile) {
+    public function __construct(Filesystem $filesystem, $outputFile) {
         $this->filesystem = $filesystem;
         $this->outputFile = $outputFile;
     }
 
-    public function setEnvs($envs) {
+    public function setConfigs($configs) {
         $filesystem = $this->filesystem;
         $outputFile = $this->outputFile;
         $contents = '';
@@ -20,19 +22,19 @@ class Writer implements WriterInterface {
         if ($filesystem->exists($outputFile)) {
             $contents = file_get_contents($outputFile);
         }
-        foreach ($envs as $name => $value) {
+        foreach ($configs as $name => $value) {
             if (preg_match('/^'.$name.'/m', $contents)) {
                 $contents = preg_replace('/^('.$name.'=).*$/m', '${1}'.$value, $contents);
             } else {
-                $contents .= "\n".$name.'='.$value;
+                $contents .= $name.'='.$value."\n";
             }
         }
         // TODO: Fixed by https://github.com/symfony/symfony/pull/14580
         file_put_contents($outputFile, $contents);
     }
 
-    public function setEnv($name, $value) {
-        $this->setEnvs(array($name => $value));
+    public function setConfig($name, $value) {
+        $this->setConfigs(array($name => $value));
     }
 
 }

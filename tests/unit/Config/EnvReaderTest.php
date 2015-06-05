@@ -2,29 +2,30 @@
 
 namespace SatisGen\Tests\Config;
 
+use \DotEnv;
+use org\bovigo\vfs\vfsStream;
+use org\bovigo\vfs\vfsStreamFile;
 use SatisGen\Config\EnvReader;
-use SatisGen\Tests\SatisGenTest;
+use SatisGen\Tests\SatisGenBaseTest;
 
-class EnvReaderTest extends SatisGenTest
+class EnvReaderTest extends SatisGenBaseTest
 {
 
-    private $envReader;
-
-    public function setUp()
-    {
+    public function setUp() {
         parent::setUp();
 
-        // Config
-        $this->envReader = new EnvReader();
+        // VFS
+        $this->vfsEnvFile->withContent(file_get_contents(__DIR__.'/../../fixtures/.env'));
+
+        // Dotenv
+        Dotenv::load($this->vfsRoot->url());
+
     }
 
-    public function testConfigEnvReaderGetEnv()
-    {
-        $envReader = $this->envReader;
-        
-        $this->assertEquals(999, $envReader->getEnv('TEST_INT', 'the test integer', FILTER_VALIDATE_INT));
-        $this->assertEquals(9.99, $envReader->getEnv('TEST_FLOAT', 'the test float', FILTER_VALIDATE_FLOAT));
-        $this->assertEquals('foobar', $envReader->getEnv('TEST_STRING', 'the test string', FILTER_VALIDATE_REGEXP, array('options' => array('regexp' =>'/^[a-zA-Z\s]*$/'))));
+    public function testConfigEnvReaderGetConfig() {
+        $this->assertEquals(999, $this->envReader->getConfig('ENV_READER_INT'));
+        $this->assertEquals(9.99, $this->envReader->getConfig('ENV_READER_FLOAT'));
+        $this->assertEquals('foobar', $this->envReader->getConfig('ENV_READER_STRING'));
     }
 
 }

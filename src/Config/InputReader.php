@@ -2,45 +2,70 @@
 
 namespace SatisGen\Config;
 
+use Symfony\Component\Console\Helper\QuestionHelper;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
-class InputReader implements ReaderInterface {
+class InputReader implements
+    AdvancedConfigReaderInterface,
+    InputReaderInterface
+{
 
     private $input;
     private $output;
-    private $helper;
+    private $questionHelper;
+    private $question;
+    private $configWriter;
+    private $first = true;
     private $answers = array();
 
-    public function __construct() {
+    public function __construct(ConfigWriterInterface $configWriter) {
+        $this->configWriter = $configWriter;
     }
 
-    public function setInput($input) {
-        $this->input = $input;
+    public function setInput(InputInterface $input) {
+       $this->input = $input;
     }
 
-    public function setOutput($output) {
+    public function setOutput(OutputInterface $output) {
         $this->output = $output;
     }
 
-    public function setHelper($helper) {
-        $this->helper = $helper;
+    public function setQuestionHelper(QuestionHelper $questionHelper) {
+        $this->questionHelper = $questionHelper;
     }
 
-    public function getEnv($name, $description, $filter = FILTER_DEFAULT, $options = null, $secure = false) {
+    public function getConfig($name, $description, $default = null, $validator = null, $secure = false) {
         if (array_key_exists($name, $this->answers)) {
             $value = $this->answers[$name];
-            // TODO - move to writer
-            //echo $value;
             return $value;
         }
 
-        $helper = $this->helper;
-        $question = new Question('Please enter '.$description.': ', getenv($name));
-        $value = $helper->ask($this->input, $this->output, $question);
+        // Get question
+        $question = new Question(
+            'Please enter '.$description.': ',
+            $default
+        );
+        $question->setHidden($secure);
+        $question->setHiddenFallback(false);
+        $question->setValidator($validator);
+        $question->setMaxAttempts(null);
+
+        if ($this->isFirst()) {
+            $this->output->write("\n");
+        }
+
+        $value = $this->questionHelper->ask($this->input, $this->output, $question);
         $this->answers[$name] = $value;
-        // TODO - move to writer
-        //echo $value;
+        $this->configWriter->setConfig($name, $value);
         return $value;
+    }
+
+    protected function isFirst() {
+        $first = $this->first;
+        $this->first = false;
+        return $first;
     }
 
 }

@@ -2,9 +2,10 @@
 
 namespace SatisGen\Config;
 
-class EnvReader implements ReaderInterface {
+class EnvReader implements ConfigReaderInterface {
 
-    function getEnv($name, $description, $filter = FILTER_DEFAULT, $options = null, $secure = false) {
-        return filter_var(getenv($name), $filter, $options);
+    function getConfig($name, $default = null) {
+        return getenv($name);
     }
+
 }

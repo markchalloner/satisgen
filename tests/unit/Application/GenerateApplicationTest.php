@@ -3,10 +3,10 @@
 namespace SatisGen\Tests\Application;
 
 use SatisGen\Application\GenerateApplication;
-use SatisGen\Tests\SatisGenTest;
+use SatisGen\Tests\SatisGenBaseTest;
 use Symfony\Component\Console\Tester\ApplicationTester;
 
-class GenerateApplicationTest extends SatisGenTest
+class GenerateApplicationTest extends SatisGenBaseTest
 {
 
     public function testCommandName() {

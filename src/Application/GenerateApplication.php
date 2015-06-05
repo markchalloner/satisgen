@@ -3,7 +3,7 @@
 namespace SatisGen\Application;
 
 use SatisGen\Command\GenerateCommand;
-use SatisGen\Config\ReaderInterface;
+use SatisGen\Config\AdvancedConfigReaderInterface;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Filesystem\Filesystem;
@@ -14,7 +14,7 @@ class GenerateApplication extends Application
     private $filesystem;
     private $config;
     
-    public function __construct(Filesystem $filesystem, ReaderInterface $config) 
+    public function __construct(Filesystem $filesystem, AdvancedConfigReaderInterface $config)
     {
         $this->filesystem = $filesystem;
         $this->config = $config;

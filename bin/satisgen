@@ -1,13 +1,34 @@
 #!/usr/bin/env php
 <?php
+define('__PROJECT__', dirname(__DIR__));
+define('__ROOT__', false === strpos(__PROJECT__, implode(DIRECTORY_SEPARATOR, array('vendor','markchalloner','satisgen'))) ? __PROJECT__ : dirname(dirname(dirname(__PROJECT__))));
 
-require __DIR__.'/../src/bootstrap.php';
+require __PROJECT__.'/src/bootstrap.php';
 
+use \Dotenv;
 use SatisGen\Application\GenerateApplication;
-use SatisGen\Command\GenerateCommand;
-use SatisGen\Config\ConfigInputReader;
-use Symfony\Component\Console\Application;
+use SatisGen\Config\ConfigReader;
+use SatisGen\Config\DotEnvWriter;
+use SatisGen\Config\EnvReader;
+use SatisGen\Config\InputReader;
 use Symfony\Component\Filesystem\Filesystem;
 
-$application = new GenerateApplication(new Filesystem(), new ConfigInputReader());
+// DotEnv
+$dotEnv = __ROOT__.'/.env';
+if (file_exists($dotEnv)) {
+    Dotenv::load(__ROOT__);
+}
+
+// Filesystem
+$filesystem = new Filesystem();
+
+// Config
+$dotEnvWriter = new DotEnvWriter($filesystem, $dotEnv);
+$inputReader  = new InputReader($dotEnvWriter);
+$envReader    = new EnvReader();
+$configReader = new ConfigReader($envReader, $inputReader);
+
+// GenerateApplication
+$application = new GenerateApplication($filesystem, $configReader);
+
 $application->run();

@@ -2,47 +2,48 @@
 
 namespace SatisGen\Tests\Config;
 
+use \Dotenv;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamFile;
 use SatisGen\Tests\SatisGenVfsTest;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class InputReaderTest extends SatisGenVfsTest
+class ConfigReaderTest extends SatisGenVfsTest
 {
 
-    public function testInputReaderGetConfig()
-    {
+    public function setUp() {
+        parent::setUp();
+
         $command = $this->application->find('generate');
         $commandTester = new CommandTester($command);
 
         $helper = $command->getHelper('question');
         $helper->setInputStream($this->getInputStream('999'));
-
+        
         $commandTester->execute(array(
             'input_file' => $this->vfsInputFile->url(),
             'output_file' => $this->vfsOutputFile->url()
         ));
-
+        
         $this->inputReader->setInput($commandTester->getInput());
         $this->inputReader->setOutput($commandTester->getOutput());
         $this->inputReader->setQuestionHelper($helper);
-
-        // Read from input
+    }
+    
+    public function testConfigReaderGetConfigFromInput() {   
+        $this->assertConfigEquals(999);
+    }
+    
+    public function testConfigReaderGetConfigFromEnv() {
+        $this->vfsEnvFile->withContent('CONFIG_READER_INT=999');
+        Dotenv::load($this->vfsRoot->url());
+        $this->assertConfigEquals(999);
+    } 
+    
+    protected function assertConfigEquals($value) {
         $this->assertEquals(
-            999,
-            $this->inputReader->getConfig('CONFIG_READER_INT', 'the test integer', null, function($answer) {
-                if (!is_int($answer)) {
-                    throw new \RuntimeException(
-                        'The answer should be an integer'
-                    );
-                }
-                return $answer;
-            })
-        );
-        // Read from cache
-        $this->assertEquals(
-            999,
-            $this->inputReader->getConfig('CONFIG_READER_INT', 'the test integer', null, function($answer) {
+            999, 
+            $this->configReader->getConfig('CONFIG_READER_INT', 'the test integer', null, function($answer) {
                 if (!is_int($answer)) {
                     throw new \RuntimeException(
                         'The answer should be an integer'

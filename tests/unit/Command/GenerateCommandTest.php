@@ -6,55 +6,45 @@ use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamFile;
 use SatisGen\Application\GenerateApplication;
 use SatisGen\Command\GenerateCommand;
-use SatisGen\Tests\SatisGenTest;
+use SatisGen\Tests\SatisGenVfsTest;
 use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Component\Filesystem\Filesystem;
 
-class GenerateCommandTest extends SatisGenTest
+class GenerateCommandTest extends SatisGenVfsTest
 {
 
-    private $inputFile;
-    private $outputFile;
+    protected $commandTester;
 
-    public function setUp()
-    {
+    public function setUp() {
         parent::setUp();
 
         // VFS
-        $root = vfsStream::setup();
-        $this->inputFile = vfsStream::newFile('satis.php')
-                                     ->withContent('<?php echo \'test\';')
-                                     ->at($root);
-        $this->outputFile = vfsStream::newFile('satis.json')
-                                     ->at($root);
+        $this->vfsInputFile->setContent('<?php echo \'test\';');
+
+        // Command
+        $command = $this->application->find('generate');
+        $this->commandTester = new CommandTester($command);
     }
 
-    public function testExecute()
-    {
-        $command = $this->application->find('generate');
-        $commandTester = new CommandTester($command);
-        $commandTester->execute(array(
-            'input_file' => $this->inputFile->url(),
-            'output_file' => $this->outputFile->url()
+    public function testExecute() {
+        $this->commandTester->execute(array(
+            'input_file' => $this->vfsInputFile->url(),
+            'output_file' => $this->vfsOutputFile->url()
         ));
 
-        $this->assertRegExp('/Generating\.\.\..*OK/s', $commandTester->getDisplay());
-        $this->assertEquals('test', $this->outputFile->getContent());
+        $this->assertRegExp('/Generating\.\.\. OK/s', $this->commandTester->getDisplay());
+        $this->assertEquals('test', $this->vfsOutputFile->getContent());
     }
 
-    public function testExecuteInputNotFound()
-    {
+    public function testExecuteInputNotFound() {
         $inputFile = 'doesnotexist.php';
 
-        $command = $this->application->find('generate');
-        $commandTester = new CommandTester($command);
-        $commandTester->execute(array(
+        $this->commandTester->execute(array(
             'input_file' => $inputFile,
-            'output_file' => $this->outputFile->url()
+            'output_file' => $this->vfsOutputFile->url()
         ));
 
-        $this->assertRegExp('/Error: '.$inputFile.' not found/', $commandTester->getDisplay());
-
+        $this->assertRegExp('/Error: '.$inputFile.' not found/', $this->commandTester->getDisplay());
     }
 
 }
