@@ -17,7 +17,7 @@
                 "type": "wordpress-plugin",
                 "dist": {
                     "type": "zip",
-                    "url": "http://www.custom.com/download?licence=ABCDEFGHIJKL"
+                    "url": "http://www.custom.com/download?licence=0123456789ABCDEF"
                 }
             }
         },

@@ -16,7 +16,7 @@ class InputReaderTest extends SatisGenVfsTest
         $commandTester = new CommandTester($command);
 
         $helper = $command->getHelper('question');
-        $helper->setInputStream($this->getInputStream('999'));
+        $helper->setInputStream($this->getInputStream('999'."\n"));
 
         $commandTester->execute(array(
             'input_file' => $this->vfsInputFile->url(),
@@ -26,12 +26,12 @@ class InputReaderTest extends SatisGenVfsTest
         $this->inputReader->setInput($commandTester->getInput());
         $this->inputReader->setOutput($commandTester->getOutput());
         $this->inputReader->setQuestionHelper($helper);
-
-        // Read from input
+        
+    // Read from input
         $this->assertEquals(
             999,
-            $this->inputReader->getConfig('CONFIG_READER_INT', 'the test integer', null, function($answer) {
-                if (!is_int($answer)) {
+            $this->inputReader->getConfig('INPUT_READER_INT', 'the test integer', null, function($answer) {
+                if (0 === preg_match('/^\d+$/', $answer)) {
                     throw new \RuntimeException(
                         'The answer should be an integer'
                     );
@@ -42,8 +42,8 @@ class InputReaderTest extends SatisGenVfsTest
         // Read from cache
         $this->assertEquals(
             999,
-            $this->inputReader->getConfig('CONFIG_READER_INT', 'the test integer', null, function($answer) {
-                if (!is_int($answer)) {
+            $this->inputReader->getConfig('INPUT_READER_INT', 'the test integer', null, function($answer) {
+                if (0 === preg_match('/^\d+$/', $answer)) {
                     throw new \RuntimeException(
                         'The answer should be an integer'
                     );

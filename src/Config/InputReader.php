@@ -50,7 +50,7 @@ class InputReader implements
         $question->setHidden($secure);
         $question->setHiddenFallback(false);
         $question->setValidator($validator);
-        $question->setMaxAttempts(null);
+        $question->setMaxAttempts(5);
 
         if ($this->isFirst()) {
             $this->output->write("\n");

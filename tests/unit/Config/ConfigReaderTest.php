@@ -44,7 +44,7 @@ class ConfigReaderTest extends SatisGenVfsTest
         $this->assertEquals(
             999, 
             $this->configReader->getConfig('CONFIG_READER_INT', 'the test integer', null, function($answer) {
-                if (!is_int($answer)) {
+                if (0 === preg_match('/^\d+$/', $answer)) {
                     throw new \RuntimeException(
                         'The answer should be an integer'
                     );

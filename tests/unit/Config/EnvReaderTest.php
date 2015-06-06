@@ -2,7 +2,7 @@
 
 namespace SatisGen\Tests\Config;
 
-use \DotEnv;
+use \Dotenv;
 use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamFile;
 use SatisGen\Config\EnvReader;

@@ -29,7 +29,7 @@ class SatisGenTest extends SatisGenVfsTest
         $helper->setInputStream($this->getInputStream(
             'Test'."\n".
             'www.test.com'."\n".
-            'ABCDEFGHIJKL'."\n"
+            '0123456789ABCDEF'."\n"
         ));
         
         $commandTester->execute(array(

@@ -22,8 +22,7 @@ abstract class SatisGenBaseTest extends \PHPUnit_Framework_TestCase
     protected $application;
     protected $inputStream;
 
-    public function setUp()
-    {
+    public function setUp() {
        
         // Filesystem
         $this->filesystem = new Filesystem();
@@ -41,11 +40,11 @@ abstract class SatisGenBaseTest extends \PHPUnit_Framework_TestCase
         // GenerateApplication
         $this->application = new GenerateApplication($this->filesystem, $this->configReader);
         $this->application->setAutoExit(false);
+
     }
     
    
-    protected function getInputStream($input)
-    {
+    protected function getInputStream($input) {
         $stream = fopen('php://memory', 'r+', false);
         fputs($stream, $input);
         rewind($stream);
