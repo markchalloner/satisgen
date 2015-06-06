@@ -6,10 +6,8 @@ use SatisGen\Config\AdvancedConfigReaderInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
 class GenerateCommand extends Command
 {
@@ -55,13 +53,6 @@ class GenerateCommand extends Command
 
         if ($filesystem->exists($inputFile)) {
             $output->write('<info>Generating... </info>');
-            /* TODO: Fixed by https://github.com/symfony/symfony/pull/14580
-            try {
-                $filesystem->dumpFile($outputFile, $this->generate($inputFile));
-                $status = $filesystem->exists($outputFile);
-            } catch (IOExceptionInterface $error) {
-                $status = false;
-            }*/
             file_put_contents($outputFile, $this->generate($inputFile));
             $status = $filesystem->exists($outputFile);
             $output->writeln($status ? '<info>OK' : '<error>Failed</error>');

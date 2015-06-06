@@ -3,7 +3,7 @@
 define('__PROJECT__', dirname(__DIR__));
 define('__ROOT__', false === strpos(__PROJECT__, implode(DIRECTORY_SEPARATOR, array('vendor','markchalloner','satisgen'))) ? __PROJECT__ : dirname(dirname(dirname(__PROJECT__))));
 
-require __PROJECT__.'/src/bootstrap.php';
+require __ROOT__.'/vendor/autoload.php';
 
 use \Dotenv;
 use SatisGen\Application\GenerateApplication;

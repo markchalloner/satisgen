@@ -29,7 +29,6 @@ class DotEnvWriter implements ConfigWriterInterface {
                 $contents .= $name.'='.$value."\n";
             }
         }
-        // TODO: Fixed by https://github.com/symfony/symfony/pull/14580
         file_put_contents($outputFile, $contents);
     }
 

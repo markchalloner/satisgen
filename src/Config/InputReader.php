@@ -15,7 +15,6 @@ class InputReader implements
     private $input;
     private $output;
     private $questionHelper;
-    private $question;
     private $configWriter;
     private $first = true;
     private $answers = array();
