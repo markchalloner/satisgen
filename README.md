@@ -6,6 +6,7 @@
 [![Build Status](https://travis-ci.org/markchalloner/satisgen.svg?branch=master)](https://travis-ci.org/markchalloner/satisgen)
 [![Coverage Status](https://coveralls.io/repos/markchalloner/satisgen/badge.svg)](https://coveralls.io/r/markchalloner/satisgen)
 [![Dependency Status](https://www.versioneye.com/user/projects/554d4b678a8e5655d6000076/badge.svg?style=flat)](https://www.versioneye.com/user/projects/554d4b678a8e5655d6000076)
+
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/f790969b-1621-4d26-b2e2-3b9969a8570f/mini.png)](https://insight.sensiolabs.com/projects/f790969b-1621-4d26-b2e2-3b9969a8570f)
 
 ## Introduction
