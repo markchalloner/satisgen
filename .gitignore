@@ -1,4 +1,6 @@
 /.env
+/build
+/docs
 /tmp
 /vendor
 /web

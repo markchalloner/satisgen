@@ -1,16 +1,25 @@
-# These settings are for any web project
+# Path-based git attributes
+# https://www.kernel.org/pub/software/scm/git/docs/gitattributes.html
+
+## Test/documentation
+
+# Ignore all test and documentation with "export-ignore".
+/.gitattributes     export-ignore
+/.gitignore         export-ignore
+/.travis.yml        export-ignore
+/phpunit.xml.dist   export-ignore
+/.scrutinizer.yml   export-ignore
+/tests              export-ignore
+
+## Line endings
+
+### Automatic
 
 # Handle line endings automatically for files detected as text
 # and leave all files detected as binary untouched.
 * text=auto eol=lf
 
-#
-# The above will handle all files NOT found below
-#
-
-#
-## These files are text and should be normalized (Convert crlf => lf)
-#
+### Text (should be normalized, convert crlf => lf)
 
 # Source
 *.php text eol=lf
@@ -89,30 +98,29 @@ Vagrantfile eol=lf
 # Scripts
 bin/* text eol=lf
 
-#
-## These files are binary and should be left untouched
-#
+### Binary (left untouched)
 
 # (binary is a macro for -text -diff)
-*.png binary
-*.jpg binary
-*.jpeg binary
-*.gif binary
-*.ico binary
-*.mov binary
-*.mp4 binary
-*.mp3 binary
-*.flv binary
-*.fla binary
-*.swf binary
-*.gz binary
-*.zip binary
-*.7z binary
-*.rar binary
-*.ttf binary
-*.eot binary
-*.woff binary
-*.woff2 binary
-*.otf binary
-*.pyc binary
-*.pdf binary
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.ico       binary
+*.mov       binary
+*.mp4       binary
+*.mp3       binary
+*.flv       binary
+*.fla       binary
+*.swf       binary
+*.gz        binary
+*.zip       binary
+*.7z        binary
+*.rar       binary
+*.ttf       binary
+*.eot       binary
+*.woff      binary
+*.woff2     binary
+*.otf       binary
+*.pyc       binary
+*.pdf       binary
+
