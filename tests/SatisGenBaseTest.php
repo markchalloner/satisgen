@@ -35,7 +35,7 @@ abstract class SatisGenBaseTest extends \PHPUnit_Framework_TestCase
         $this->vfsEnvFile = vfsStream::newFile('.env')->at($this->vfsRoot);
 
         // Dotenv
-        $this->$dotenv = new Dotenv($this->vfsRoot->url());
+        $this->dotenv = new Dotenv($this->vfsRoot->url());
 
         // Config
         $this->dotEnvWriter = new DotEnvWriter($this->filesystem, $this->vfsEnvFile->url());
