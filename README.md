@@ -115,10 +115,10 @@ to keep a record of archived tools and techniques:
 and to implement (todo):
 
 - [Dependecy Injection] in a better way
-  - [DIC] (Dependency Injection Containers)
-  - [Traits] (PHP 5.4+)
+  - [DIC] - dependency injection container
+  - [Traits] - supported by PHP 5.4+
 - [PHPDoc]
-- [Twig] for language independent templating
+- [Twig] - language independent templating
 
 [Mark Challoner]: https://github.com/markchalloner
 [CHANGELOG]: CHANGELOG.md
