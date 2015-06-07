@@ -4,9 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This file uses change log convention from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased][unreleased]
+
+## [1.0.0] - 2015-06-07
 ### Added
 - Config handling and writing [Dotenv] files
 - Integration tests and fixtures under tests
+- Scrutinizer settings
 ### Changed
 - Moved unit tests into tests/unit
 
@@ -33,7 +36,8 @@ This file uses change log convention from [Keep a CHANGELOG](http://keepachangel
 - Dependencies via composer composer.json
 - Readme file with documentation README.md
 
-[unreleased]: https://github.com/markchalloner/satisgen/compare/0.0.3...HEAD
+[unreleased]: https://github.com/markchalloner/satisgen/compare/1.0.0...HEAD
+[1.0.0]: https://github.com/markchalloner/satisgen/compare/0.0.3...1.0.0
 [0.0.3]: https://github.com/markchalloner/satisgen/compare/0.0.2...0.0.3
 [0.0.2]: https://github.com/markchalloner/satisgen/compare/0.0.1...0.0.2
 
