@@ -1,6 +1,6 @@
 # SatisGen
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/markchalloner/satisgen.svg?style=flat-square)](https://packagist.org/packages/league/:package_name)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/markchalloner/satisgen.svg?style=flat-square)](https://packagist.org/packages/markchalloner/satisgen)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/markchalloner/satisgen/master.svg?style=flat-square)](https://travis-ci.org/markchalloner/satisgen)
 [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/markchalloner/satisgen.svg?style=flat-square)](https://scrutinizer-ci.com/g/markchalloner/satisgen/code-structure)
