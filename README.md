@@ -114,10 +114,11 @@ to keep a record of archived tools and techniques:
 
 and to implement (todo):
 
-- [Dependecy Injection]
-  - [DIC]
-  - [Traits]
+- [Dependecy Injection] in a better way
+  - [DIC] (Dependency Injection Containers)
+  - [Traits] (PHP 5.4+)
 - [PHPDoc]
+- [Twig] for language independent templating
 
 [Mark Challoner]: https://github.com/markchalloner
 [CHANGELOG]: CHANGELOG.md
@@ -141,3 +142,4 @@ and to implement (todo):
 [DIC]: http://symfony.com/doc/current/components/dependency_injection/introduction.html
 [Traits]: http://jasonlotito.com/programming/injectors-dependency-injection-with-traits
 [PHPDoc]: http://www.phpdoc.org/
+[Twig]: http://twig.sensiolabs.org/
