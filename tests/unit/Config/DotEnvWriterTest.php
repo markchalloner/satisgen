@@ -2,12 +2,7 @@
 
 namespace SatisGen\Tests\Config;
 
-use \Dotenv;
-use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamFile;
-use SatisGen\Config\DotEnvWriter;
 use SatisGen\Tests\SatisGenBaseTest;
-use Symfony\Component\Console\Tester\CommandTester;
 
 class DotEnvWriterTest extends SatisGenBaseTest
 {
@@ -30,7 +25,7 @@ class DotEnvWriterTest extends SatisGenBaseTest
             'DOT_ENV_WRITER_STRING' => 'foobar'
         ));
 
-        Dotenv::load($this->vfsRoot->url());
+        $this->dotenv->load();
 
         // Read from .env
         $this->assertEquals(999, getenv('DOT_ENV_WRITER_INT'));
@@ -41,11 +36,9 @@ class DotEnvWriterTest extends SatisGenBaseTest
     public function testDotEnvWriterSetConfig() {
         $this->dotEnvWriter->setConfig('DOT_ENV_WRITER_STRING', 'foobar');
 
-        Dotenv::load($this->vfsRoot->url());
+        $this->dotenv->load();
 
         // Read from .env
-        //$this->assertEquals(999, getenv('DOT_ENV_WRITER_INT'));
-        //$this->assertEquals(9.99, getenv('DOT_ENV_WRITER_FLOAT'));
         $this->assertEquals('foobar', getenv('DOT_ENV_WRITER_STRING'));
     }
 

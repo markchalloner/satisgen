@@ -5,7 +5,7 @@ define('__ROOT__', false === strpos(__PROJECT__, implode(DIRECTORY_SEPARATOR, ar
 
 require __ROOT__.'/vendor/autoload.php';
 
-use \Dotenv;
+use Dotenv\Dotenv;
 use SatisGen\Application\GenerateApplication;
 use SatisGen\Config\ConfigReader;
 use SatisGen\Config\DotEnvWriter;
@@ -14,16 +14,17 @@ use SatisGen\Config\InputReader;
 use Symfony\Component\Filesystem\Filesystem;
 
 // DotEnv
-$dotEnv = __ROOT__.'/.env';
-if (file_exists($dotEnv)) {
-    Dotenv::load(__ROOT__);
+$dotenvFile = __ROOT__.'/.env';
+if (file_exists($dotenvFile)) {
+    $dotenv = new Dotenv(__ROOT__);
+    $dotenv->load();
 }
 
 // Filesystem
 $filesystem = new Filesystem();
 
 // Config
-$dotEnvWriter = new DotEnvWriter($filesystem, $dotEnv);
+$dotEnvWriter = new DotEnvWriter($filesystem, $dotenvFile);
 $inputReader  = new InputReader($dotEnvWriter);
 $envReader    = new EnvReader();
 $configReader = new ConfigReader($envReader, $inputReader);

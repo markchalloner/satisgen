@@ -2,8 +2,8 @@
 
 namespace SatisGen\Tests;
 
+use Dotenv\Dotenv;
 use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamFile;
 use SatisGen\Application\GenerateApplication;
 use SatisGen\Config\ConfigReader;
 use SatisGen\Config\DotEnvWriter;
@@ -21,6 +21,9 @@ abstract class SatisGenBaseTest extends \PHPUnit_Framework_TestCase
     protected $configReader;
     protected $application;
     protected $inputStream;
+    protected $dotenv;
+    protected $vfsEnvFile;
+    protected $vfsRoot;
 
     public function setUp() {
        
@@ -30,6 +33,9 @@ abstract class SatisGenBaseTest extends \PHPUnit_Framework_TestCase
         // VFS
         $this->vfsRoot = vfsStream::setup();
         $this->vfsEnvFile = vfsStream::newFile('.env')->at($this->vfsRoot);
+
+        // Dotenv
+        $this->$dotenv = new Dotenv($this->vfsRoot->url());
 
         // Config
         $this->dotEnvWriter = new DotEnvWriter($this->filesystem, $this->vfsEnvFile->url());

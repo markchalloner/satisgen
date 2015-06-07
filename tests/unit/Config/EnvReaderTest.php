@@ -2,10 +2,6 @@
 
 namespace SatisGen\Tests\Config;
 
-use \Dotenv;
-use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamFile;
-use SatisGen\Config\EnvReader;
 use SatisGen\Tests\SatisGenBaseTest;
 
 class EnvReaderTest extends SatisGenBaseTest
@@ -18,7 +14,7 @@ class EnvReaderTest extends SatisGenBaseTest
         $this->vfsEnvFile->withContent(file_get_contents(__DIR__.'/../../fixtures/.env'));
 
         // Dotenv
-        Dotenv::load($this->vfsRoot->url());
+        $this->dotenv->load();
 
     }
 

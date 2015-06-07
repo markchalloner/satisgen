@@ -2,9 +2,6 @@
 
 namespace SatisGen\Tests\Config;
 
-use \Dotenv;
-use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamFile;
 use SatisGen\Tests\SatisGenVfsTest;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -36,7 +33,7 @@ class ConfigReaderTest extends SatisGenVfsTest
     
     public function testConfigReaderGetConfigFromEnv() {
         $this->vfsEnvFile->withContent('CONFIG_READER_INT=999');
-        Dotenv::load($this->vfsRoot->url());
+        $this->dotenv->load();
         $this->assertConfigEquals(999);
     } 
     
