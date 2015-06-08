@@ -24,9 +24,9 @@ class DotEnvWriter implements ConfigWriterInterface {
         }
         foreach ($configs as $name => $value) {
             if (preg_match('/^'.$name.'/m', $contents)) {
-                $contents = preg_replace('/^('.$name.'=).*$/m', '${1}'.$value, $contents);
+                $contents = preg_replace('/^('.$name.'=).*$/m', '${1}"'.$value.'"', $contents);
             } else {
-                $contents .= $name.'='.$value."\n";
+                $contents .= $name.'="'.$value.'"'."\n";
             }
         }
         file_put_contents($outputFile, $contents);
