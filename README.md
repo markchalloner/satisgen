@@ -20,7 +20,7 @@ If the environmental variables are not found a [Dotenv] file is written at .env 
 Via Composer
 
 ``` bash
-$ composer require markchalloner/satisgen
+$ composer require 'markchalloner/satisgen:~1.0'
 ```
 
 ## Usage
