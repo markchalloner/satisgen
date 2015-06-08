@@ -5,6 +5,10 @@ This file uses change log convention from [Keep a CHANGELOG](http://keepachangel
 
 ## [Unreleased][unreleased]
 
+## [1.0.1] - 2015-06-08
+### Fixed
+- Quotes around all env vars
+
 ## [1.0.0] - 2015-06-07
 ### Added
 - Config handling and writing [Dotenv] files
@@ -26,8 +30,6 @@ This file uses change log convention from [Keep a CHANGELOG](http://keepachangel
 - PHPUnit settings
 - Composer license
 
-[Dotenv]: https://github.com/vlucas/phpdotenv
-
 ## [0.0.1] - 2015-05-09
 ### Added
 - Initial version
@@ -36,7 +38,10 @@ This file uses change log convention from [Keep a CHANGELOG](http://keepachangel
 - Dependencies via composer composer.json
 - Readme file with documentation README.md
 
+[Dotenv]: https://github.com/vlucas/phpdotenv
+
 [unreleased]: https://github.com/markchalloner/satisgen/compare/1.0.0...HEAD
+[1.0.1]: https://github.com/markchalloner/satisgen/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/markchalloner/satisgen/compare/0.0.3...1.0.0
 [0.0.3]: https://github.com/markchalloner/satisgen/compare/0.0.2...0.0.3
 [0.0.2]: https://github.com/markchalloner/satisgen/compare/0.0.1...0.0.2
