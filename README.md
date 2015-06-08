@@ -9,9 +9,10 @@
 
 ## Introduction
 
-A satis.php to satis.json generator. Allows you to separate your satis.json file and sensitive data into environment variables.
+A config file generator. Allows you to seperate your configuration file and sensitive data into environment variables. 
+Originally used to generate satis.json file from a satis.php file, but can be used as a pre-parser for any text based config files even those without a php specific file extension.
 
-When run, will check for each environmental variables specified in the satis.php file and if found replace in the final satis.json or prompt the user to enter the data.
+When run, will check for each environmental variables specified in the file and if found replace in the final output file or prompt the user to enter the data.
 
 If the environmental variables are not found a [Dotenv] file is written at .env with the values from the user.
 
@@ -57,9 +58,11 @@ Run
 vendor/bin/satisgen [input_file (default:satis.php)] [output_file (default:satis.json)]
 ```
 
-### Example
+### Examples
 
-Can be found under
+#### Satis json
+
+An example satis.php file can be found under
 
 ```
 tests/fixtures/satis.php
@@ -70,6 +73,20 @@ Run
 ``` bash
 vendor/bin/satisgen vendor/markchalloner/satisgen/tests/fixtures/satis.php
 ```
+
+Generates a satis.json file in the project directory.
+
+#### htaccess
+
+See [Oban-Satis] for an example [.htaccess.php] file.
+
+Run
+
+``` bash
+vendor/bin/satisgen .htaccess.php .htaccess
+```
+
+Generates a .htaccess file in the project directory.
 
 ## Change log
 
@@ -122,6 +139,8 @@ and to implement (todo):
 
 [Mark Challoner]: https://github.com/markchalloner
 [CHANGELOG]: CHANGELOG.md
+[Oban-Satis]: https://github.com/oban/oban-satis
+[.htaccess.php]: https://github.com/oban/oban-satis/blob/master/.htaccess.php
 [Symfony Console component]: http://symfony.com/doc/current/components/console/introduction.html
 [Travis CI]: https://travis-ci.org/markchalloner/satisgen
 [Packagist]: https://packagist.org/packages/markchalloner/satisgen
