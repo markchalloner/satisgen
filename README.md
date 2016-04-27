@@ -62,7 +62,7 @@ vendor/bin/satisgen [input_file (default:satis.php)] [output_file (default:satis
 
 #### Satis json
 
-An example satis.php file can be found under
+An example [satis.php](tests/fixtures/satis.php) file can be found under
 
 ```
 tests/fixtures/satis.php
